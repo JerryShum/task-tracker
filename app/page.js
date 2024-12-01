@@ -16,8 +16,8 @@ export default function Home() {
          {/* <h2>Track and manage your tasks efficiently using our TaskTracker!</h2> */}
 
          {tasks ? (
-            <div className="border-2 border-accent-light p-6 rounded-xl">
-               <h2 className="text-primary-light font-semibold text-2xl ">
+            <div className="border-2 border-accent-lighter p-6 rounded-xl">
+               <h2 className="text-accent-lighter font-semibold text-2xl ">
                   Current status of your tasks:
                </h2>
             </div>
