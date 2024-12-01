@@ -9,8 +9,8 @@ export default function Home() {
    ];
 
    return (
-      <div className="px-60 space-y-10">
-         <h1 className=" text-primary-lighter font-bold text-4xl mt-10">
+      <div className="px-60 py-10 space-y-10">
+         <h1 className=" text-primary-lighter font-bold text-4xl">
             Welcome, {username}!
          </h1>
          {/* <h2>Track and manage your tasks efficiently using our TaskTracker!</h2> */}
