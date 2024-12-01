@@ -21,7 +21,9 @@ export default function RootLayout({ children }) {
          <body className={`${inter.className} min-h-screen bg-slate-300 flex`}>
             <Sidebar />
             <div className="flex-1 h-screen w-0 bg-background-darker">
-               <main className="mx-auto">{children}</main>
+               <main className="mx-auto overflow-scroll h-screen overflow-x-hidden">
+                  {children}
+               </main>
             </div>
          </body>
       </html>
