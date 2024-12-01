@@ -9,20 +9,20 @@ module.exports = {
       extend: {
          colors: {
             primary: {
-               lightest: "#A1B6D4", // Soft light blue
-               lighter: "#6E8C99", // Muted blue
-               light: "#4A6B85", // Slightly darker blue
-               DEFAULT: "#2C3E5C", // Main primary dark blue
-               dark: "#1A2C44", // Darker blue for accents
-               darker: "#132136", // Very dark blue, nearly navy
+               lightest: "#7FB3D5", // Softer and more vibrant light blue
+               lighter: "#4A90D9", // A brighter, more vibrant muted blue
+               light: "#357ABD", // A richer, more vibrant blue
+               DEFAULT: "#1A5D8D", // Strong primary blue, more vibrant
+               dark: "#134B6D", // Darker blue with vibrant accents
+               darker: "#0F3B5C", // Very dark, almost navy blue
             },
             accent: {
-               lightest: "#F0F1F4", // Very light grey-blue
-               lighter: "#D1D4E1", // Soft, muted grey
-               light: "#B0B6C0", // Light grey-blue
-               DEFAULT: "#B0BEC5", // Medium grey-blue (for accent elements)
-               dark: "#607D8B", // Darker blue-grey
-               darker: "#455A64", // Very dark grey-blue
+               lightest: "#E1F1F7", // Light and fresh grey-blue accent
+               lighter: "#B3CCDB", // Lighter muted blue for accents
+               light: "#90A7B6", // Medium light grey-blue
+               DEFAULT: "#7D97A8", // Strong accent blue-grey
+               dark: "#3C576C", // Darker blue-grey accent
+               darker: "#2A4055", // Very dark blue-grey, for deep contrast
             },
             text: {
                DEFAULT: "#ECEFF1", // Light grayish text for readability
