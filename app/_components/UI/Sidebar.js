@@ -2,13 +2,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./Logo";
-import { CheckBadgeIcon, HomeIcon, UserIcon } from "@heroicons/react/24/solid";
+import {
+   CheckBadgeIcon,
+   HomeIcon,
+   UserIcon,
+   ArrowRightCircleIcon,
+} from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
    { name: "Home", href: "/", icon: HomeIcon },
    { name: "Tasks", href: "/task", icon: CheckBadgeIcon },
    { name: "Profile", href: "/profile", icon: UserIcon },
+   { name: "Sign In", href: "/signin", icon: ArrowRightCircleIcon },
 ];
 
 function Sidebar() {

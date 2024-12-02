@@ -31,6 +31,11 @@ const authConfig = {
          //  session.user.guestID = guest.id;
          return session;
       },
+
+      async redirect({ url, baseUrl }) {
+         // Always redirect to home page after sign-in
+         return baseUrl;
+      },
    },
 };
 
