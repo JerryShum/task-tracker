@@ -1,7 +1,11 @@
+"use client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function Home() {
-   const username = "Jerry";
+   const session = useSession();
+
+   const username = session?.data?.user.name;
    const tasks = [
       { id: 1, title: "Complete project report", status: "In Progress" },
       { id: 2, title: "Review team feedback", status: "Pending" },
