@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import Sidebar from "@/app/_components/UI/Sidebar";
 import "@/app/globals.css";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({
    subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
             <Sidebar />
             <div className="flex-1 h-screen w-0 bg-background-darker">
                <main className="mx-auto overflow-scroll h-screen overflow-x-hidden">
-                  {children}
+                  <SessionProvider>{children}</SessionProvider>
                </main>
             </div>
          </body>
