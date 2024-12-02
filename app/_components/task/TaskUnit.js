@@ -1,3 +1,5 @@
+"use client";
+
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
@@ -14,17 +16,15 @@ function TaskUnit({ task }) {
                   {title}
                </h3>
                <p className="text-gray-600 mb-2">{description}</p>
-               <p className="text-sm text-gray-500">
-                  Due Date: {new Date(due_date).toLocaleDateString()}
-               </p>
+               <p className="text-sm text-gray-500">Due Date: {due_date}</p>
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2">
                <Link href={`/task/${id}`}>
-                  <PencilSquareIcon className="h-6" />
+                  <PencilSquareIcon className="h-6 text-black" />
                </Link>
                <button>
-                  <TrashIcon className="h-6" />
+                  <TrashIcon className="h-6 text-black" />
                </button>
             </div>
          </div>
