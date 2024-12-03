@@ -19,7 +19,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
    return (
       <html lang="en">
-         <body className={`${inter.className} flex flex-col`}>
+         <body
+            className={`${inter.className} flex flex-col bg-white px-60 h-screen`}
+         >
             <Header />
 
             <main className="flex-1">{children}</main>
