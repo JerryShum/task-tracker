@@ -1,17 +1,15 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Github from "@/public/Github.svg";
 import Google from "@/public/logo-google.svg";
 import FormButton from "./FormButton";
 
-function LoginForm() {
+function SignupForm() {
    return (
       <div className="gap-8 shadow-2xl border rounded-lg p-8 ">
          <div className="flex flex-col justify-center">
             <h1 className="text-3xl font-bold mb-6 text-primary-lighter">
-               Log In
+               Sign Up
             </h1>
             {/* Social Login Buttons */}
             <div className="flex flex-col space-y-4">
@@ -39,7 +37,7 @@ function LoginForm() {
                   <input
                      type="email"
                      placeholder="Enter your email..."
-                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
                   />
                </div>
                <div>
@@ -49,10 +47,10 @@ function LoginForm() {
                   <input
                      type="password"
                      placeholder="Enter your password..."
-                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
                   />
                </div>
-               <FormButton type={"login"}>Log In with Email</FormButton>
+               <FormButton type={"signup"}>Sign Up with Email</FormButton>
             </form>
 
             {/* Terms and Existing Account */}
@@ -68,9 +66,9 @@ function LoginForm() {
                .
             </p>
             <p className="mt-4 text-sm">
-               <span className="text-black">Don't have an account?</span>{" "}
+               <span className="text-black">Already have an account?</span>{" "}
                <Link href="/signup" className="text-indigo-500 hover:underline">
-                  Go to signup
+                  Login
                </Link>
             </p>
          </div>
@@ -78,4 +76,4 @@ function LoginForm() {
    );
 }
 
-export default LoginForm;
+export default SignupForm;
