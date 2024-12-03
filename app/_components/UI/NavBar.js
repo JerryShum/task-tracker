@@ -3,9 +3,12 @@ import Link from "next/link";
 function NavBar() {
    return (
       <nav>
-         <ul className="flex space-x-6 text-accent-lighter">
+         <ul className="flex space-x-6">
             <li>
-               <Link href="/login" className="hover:underline">
+               <Link
+                  href="/login"
+                  className="hover:underline text-primary-light font-semibold"
+               >
                   Login
                </Link>
             </li>
