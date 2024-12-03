@@ -1,5 +1,5 @@
-import AddTaskForm from "../_components/task/AddTaskForm";
-import TaskList from "../_components/task/TaskList";
+import AddTaskForm from "../../_components/task/AddTaskForm";
+import TaskList from "../../_components/task/TaskList";
 
 export default function Page() {
    return (

@@ -18,8 +18,13 @@ export const metadata = {
 export default async function RootLayout({ children }) {
    return (
       <html lang="en">
-         <body className={`${inter.className} bg-background-light`}>
-            <main>{children}</main>
+         <body className={`${inter.className} min-h-screen bg-slate-300 flex`}>
+            <Sidebar />
+            <div className="flex-1 h-screen w-0 bg-background-darker">
+               <main className="mx-auto overflow-scroll h-screen overflow-x-hidden">
+                  {children}
+               </main>
+            </div>
          </body>
       </html>
    );
