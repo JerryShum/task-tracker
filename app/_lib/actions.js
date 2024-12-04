@@ -36,6 +36,7 @@ export async function getUserAction(previousState, formdata) {
    // response.success = true
    if (response.success) {
       return {
+         user: response.user,
          status: "success",
          message: "Successfully logged in!",
       };
