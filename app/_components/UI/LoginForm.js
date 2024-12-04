@@ -91,7 +91,7 @@ function LoginForm() {
                .
             </p>
             <p className="mt-4 text-sm">
-               <span className="text-black">Don't have an account?</span>{" "}
+               <span className="text-black">Don&apos;t have an account?</span>{" "}
                <Link href="/signup" className="text-indigo-500 hover:underline">
                   Go to signup
                </Link>
