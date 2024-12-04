@@ -9,22 +9,25 @@ import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { getUserAction } from "@/app/_lib/actions";
 import toast from "react-hot-toast";
+import { useUser } from "../UserContext";
 
 function LoginForm() {
    const router = useRouter();
-   const [message, formAction] = useActionState(getUserAction, null);
+   const [serverActionState, formAction] = useActionState(getUserAction, null);
+   const { user, setUser } = useUser();
 
    // Handle success or error messages
    useEffect(() => {
-      if (!message) return;
+      if (!serverActionState) return;
 
-      if (message.status === "success") {
-         toast.success(message.message);
+      if (serverActionState.status === "success") {
+         setUser(serverActionState.user);
+         toast.success(serverActionState.message);
          router.push("/application");
-      } else if (message.status === "error") {
-         toast.error(message.message);
+      } else if (serverActionState.status === "error") {
+         toast.error(serverActionState.message);
       }
-   }, [message, router]);
+   }, [serverActionState, router, setUser]);
 
    return (
       <div className="gap-8 shadow-2xl border rounded-lg p-8 ">
