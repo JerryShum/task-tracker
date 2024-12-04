@@ -11,10 +11,9 @@ import {
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-   { name: "Home", href: "/", icon: HomeIcon },
-   { name: "Tasks", href: "/task", icon: CheckBadgeIcon },
-   { name: "Profile", href: "/profile", icon: UserIcon },
-   { name: "Sign In", href: "/signin", icon: ArrowRightCircleIcon },
+   { name: "Home", href: "/application", icon: HomeIcon },
+   { name: "Tasks", href: "/application/task", icon: CheckBadgeIcon },
+   { name: "Profile", href: "/application/profile", icon: UserIcon },
 ];
 
 function Sidebar() {
