@@ -1,6 +1,4 @@
-import Image from "next/image";
 import LoginForm from "../_components/UI/LoginForm";
-import calendar from "@/public/calendar.png";
 
 export default function Page() {
    return (
