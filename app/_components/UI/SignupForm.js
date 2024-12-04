@@ -1,10 +1,31 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Github from "@/public/Github.svg";
 import Google from "@/public/logo-google.svg";
 import FormButton from "./FormButton";
+import { insertUserAction } from "@/app/_lib/actions";
+import { useActionState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 function SignupForm() {
+   // Use ActionState parameters: formAction to run and also the initalstate
+   // Returns the updated state after the formaction is invoked
+   const [creationState, formAction] = useActionState(insertUserAction, null);
+
+   //? Use effect triggers after a component re-renders (perfect for this scenario b/c our component re-renders after calling the form action)
+   useEffect(() => {
+      if (creationState === true) {
+         toast.success("Account successfully created! Please login (:");
+         redirect("/login");
+      }
+      if (creationState === false) {
+         toast.error("Failed to create account. Please try again.");
+      }
+   }, [creationState]);
+
    return (
       <div className="gap-8 shadow-2xl border rounded-lg p-8 ">
          <div className="flex flex-col justify-center">
@@ -29,15 +50,29 @@ function SignupForm() {
             </div>
 
             {/* Email and Password Fields */}
-            <form className="space-y-4">
+            <form className="space-y-4" action={formAction}>
+               <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                     Name/Username
+                  </label>
+                  <input
+                     type="text"
+                     name="username"
+                     placeholder="Enter your name..."
+                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
+                     required
+                  />
+               </div>
                <div>
                   <label className="block text-sm font-medium text-gray-700">
                      Email
                   </label>
                   <input
                      type="email"
+                     name="email"
                      placeholder="Enter your email..."
                      className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
+                     required
                   />
                </div>
                <div>
@@ -46,8 +81,10 @@ function SignupForm() {
                   </label>
                   <input
                      type="password"
+                     name="password"
                      placeholder="Enter your password..."
                      className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
+                     required
                   />
                </div>
                <FormButton type={"signup"}>Sign Up with Email</FormButton>
