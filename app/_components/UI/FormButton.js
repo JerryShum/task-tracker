@@ -1,9 +1,11 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
+import toast from "react-hot-toast";
 
 function FormButton({ type }) {
    const { pending, data, method, action } = useFormStatus();
+
    if (type == "signup")
       return (
          <button
