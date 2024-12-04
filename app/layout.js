@@ -2,7 +2,7 @@ import Sidebar from "@/app/_components/UI/Sidebar";
 import "@/app/globals.css";
 import { Inter } from "next/font/google";
 import Header from "./_components/UI/Header";
-
+import { Toaster } from "react-hot-toast";
 const inter = Inter({
    subsets: ["latin"],
    display: "swap",
@@ -22,6 +22,7 @@ export default async function RootLayout({ children }) {
          <body
             className={`${inter.className} flex flex-col bg-white px-60 h-screen`}
          >
+            <Toaster />
             <Header />
 
             <main className="flex-1">{children}</main>
