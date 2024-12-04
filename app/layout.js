@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import { Inter } from "next/font/google";
 import Header from "./_components/UI/Header";
 import { Toaster } from "react-hot-toast";
+import { UserProvider } from "./_components/UserContext";
 const inter = Inter({
    subsets: ["latin"],
    display: "swap",
@@ -25,7 +26,9 @@ export default async function RootLayout({ children }) {
             <Toaster />
             <Header />
 
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+               <UserProvider>{children}</UserProvider>
+            </main>
          </body>
       </html>
    );
