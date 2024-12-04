@@ -1,18 +1,27 @@
 import toast from "react-hot-toast";
 import { supabase } from "./supabase";
 
-export async function insertUser(user) {
-   console.log(user);
-   const { data, error } = await supabase
-      .from("users")
-      .insert([
-         {
-            user_name: user.username,
-            email: user.email,
-            password: user.password,
-         },
-      ])
-      .select();
+export async function insertUser({ username, email, password }) {
+   try {
+      const { data, error } = await supabase
+         .from("users")
+         .insert([{ username, email, password }]);
+
+      if (error) {
+         // Check for unique constraint violation or other errors
+         if (error.code === "23505") {
+            throw new Error(
+               "This email is already registered. Please use a different email."
+            );
+         }
+         throw error; // Re-throw any other error
+      }
+
+      return { success: true };
+   } catch (err) {
+      // Handle unexpected errors
+      return { success: false, message: err.message };
+   }
 }
 
 export async function getUser({ user_email }) {

@@ -9,11 +9,18 @@ export async function insertUserAction(previousState, formdata) {
       password: formdata.get("password"),
    };
 
-   try {
-      await insertUser(user);
-      return true; // Success
-   } catch (error) {
-      console.error("Error creating user:", error);
-      return false; // Failure
+   const response = await insertUser(user);
+
+   if (response.success) {
+      return {
+         status: "success",
+         message: "User created successfully! Please Log In (:",
+      };
+   } else {
+      // Return the error message from the `insertUser` function
+      return {
+         status: "error",
+         message: response.message || "An unexpected error occurred.",
+      };
    }
 }

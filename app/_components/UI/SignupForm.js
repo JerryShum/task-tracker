@@ -8,23 +8,25 @@ import FormButton from "./FormButton";
 import { insertUserAction } from "@/app/_lib/actions";
 import { useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function SignupForm() {
    // Use ActionState parameters: formAction to run and also the initalstate
    // Returns the updated state after the formaction is invoked
-   const [creationState, formAction] = useActionState(insertUserAction, null);
+   const router = useRouter();
+   const [message, formAction] = useActionState(insertUserAction, null);
 
-   //? Use effect triggers after a component re-renders (perfect for this scenario b/c our component re-renders after calling the form action)
+   // Handle success or error messages
    useEffect(() => {
-      if (creationState === true) {
-         toast.success("Account successfully created! Please login (:");
-         redirect("/login");
+      if (!message) return;
+
+      if (message.status === "success") {
+         toast.success(message.message);
+         router.push("/login"); // Redirect to login page
+      } else if (message.status === "error") {
+         toast.error(message.message);
       }
-      if (creationState === false) {
-         toast.error("Failed to create account. Please try again.");
-      }
-   }, [creationState]);
+   }, [message, router]);
 
    return (
       <div className="gap-8 shadow-2xl border rounded-lg p-8 ">
