@@ -1,6 +1,6 @@
 "use server";
 
-import { insertUser } from "./supabaseAPI";
+import { getUser, insertUser } from "./supabaseAPI";
 
 export async function insertUserAction(previousState, formdata) {
    const user = {
@@ -18,6 +18,28 @@ export async function insertUserAction(previousState, formdata) {
       };
    } else {
       // Return the error message from the `insertUser` function
+      return {
+         status: "error",
+         message: response.message || "An unexpected error occurred.",
+      };
+   }
+}
+
+export async function getUserAction(previousState, formdata) {
+   const user = {
+      email: formdata.get("email"),
+      password: formdata.get("password"),
+   };
+
+   const response = await getUser(user);
+
+   // response.success = true
+   if (response.success) {
+      return {
+         status: "success",
+         message: "Successfully logged in!",
+      };
+   } else {
       return {
          status: "error",
          message: response.message || "An unexpected error occurred.",

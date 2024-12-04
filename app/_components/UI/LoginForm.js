@@ -5,8 +5,27 @@ import Link from "next/link";
 import Github from "@/public/Github.svg";
 import Google from "@/public/logo-google.svg";
 import FormButton from "./FormButton";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
+import { getUserAction } from "@/app/_lib/actions";
+import toast from "react-hot-toast";
 
 function LoginForm() {
+   const router = useRouter();
+   const [message, formAction] = useActionState(getUserAction, null);
+
+   // Handle success or error messages
+   useEffect(() => {
+      if (!message) return;
+
+      if (message.status === "success") {
+         toast.success(message.message);
+         router.push("/application");
+      } else if (message.status === "error") {
+         toast.error(message.message);
+      }
+   }, [message, router]);
+
    return (
       <div className="gap-8 shadow-2xl border rounded-lg p-8 ">
          <div className="flex flex-col justify-center">
@@ -31,7 +50,7 @@ function LoginForm() {
             </div>
 
             {/* Email and Password Fields */}
-            <form className="space-y-4">
+            <form className="space-y-4" action={formAction}>
                <div>
                   <label className="block text-sm font-medium text-gray-700">
                      Email
@@ -39,7 +58,9 @@ function LoginForm() {
                   <input
                      type="email"
                      placeholder="Enter your email..."
-                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
+                     required
+                     name="email"
                   />
                </div>
                <div>
@@ -49,7 +70,9 @@ function LoginForm() {
                   <input
                      type="password"
                      placeholder="Enter your password..."
-                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                     className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-accent"
+                     required
+                     name="password"
                   />
                </div>
                <FormButton type={"login"}>Log In with Email</FormButton>

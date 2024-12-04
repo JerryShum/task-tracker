@@ -24,13 +24,40 @@ export async function insertUser({ username, email, password }) {
    }
 }
 
-export async function getUser({ user_email }) {
-   let { data: user, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("email", user_email);
+export async function getUser({ email, password }) {
+   try {
+      //!fetch from supabase
+      const { data: users, error } = await supabase
+         .from("users")
+         .select("*")
+         .eq("email", email);
 
-   if (error) throw new Error("There was an error getting the specified user.");
+      if (error) {
+         throw new Error("There was an error retrieving the user.");
+      }
 
-   return data;
+      //! Check if user exists
+      if (!users || users.length === 0) {
+         throw new Error("User not found. Please check your email.");
+      }
+
+      const user = users[0]; // Assuming emails are unique and return only one user
+
+      //! Check if password matches
+      if (user.password !== password) {
+         throw new Error("Incorrect password. Please try again.");
+      }
+
+      // If everything is fine, return the user -> setting the response to this -> received by formAction
+      return {
+         success: true,
+         data: user,
+      };
+   } catch (err) {
+      // If theres an error, set the response to this:
+      return {
+         success: false,
+         message: err.message,
+      };
+   }
 }
