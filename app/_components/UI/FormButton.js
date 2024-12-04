@@ -9,7 +9,6 @@ function FormButton({ type }) {
    if (type == "signup")
       return (
          <button
-            type="submit"
             className="w-full bg-primary-lighter text-white py-2 px-4 rounded-lg hover:bg-primary-light duration-300 font-bold"
             disabled={pending}
          >
@@ -19,11 +18,10 @@ function FormButton({ type }) {
    else if (type == "login") {
       return (
          <button
-            type="submit"
             className="w-full bg-primary-lighter text-white py-2 px-4 rounded-lg hover:bg-primary-light duration-300 font-bold"
             disabled={pending}
          >
-            {pending ? "Loggin In..." : "Log In with Email"}
+            {pending ? "Loggin In..." : "Log In"}
          </button>
       );
    }
