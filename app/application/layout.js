@@ -15,7 +15,7 @@ export const metadata = {
    description: "Part 1 of Jerry's Personal Projects",
 };
 
-export default async function RootLayout({ children }) {
+export default async function Layout({ children }) {
    return (
       <html lang="en">
          <body className={`${inter.className} min-h-screen bg-slate-300 flex`}>

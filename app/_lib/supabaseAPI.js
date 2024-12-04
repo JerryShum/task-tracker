@@ -50,6 +50,7 @@ export async function getUser({ email, password }) {
 
       // If everything is fine, return the user -> setting the response to this -> received by formAction
       return {
+         user: user,
          success: true,
          data: user,
       };
