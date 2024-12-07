@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 export default async function Page() {
    const cookieStore = cookies();
-   const userID = cookieStore.get("userID")?.value;
+   const userID = await cookieStore.get("userID")?.value;
    console.log(userID);
 
    const tasks = await getTasks(userID);
