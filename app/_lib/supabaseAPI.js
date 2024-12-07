@@ -62,3 +62,12 @@ export async function getUser({ email, password }) {
       };
    }
 }
+
+export async function getTasks(userID) {
+   let { data: tasks, error } = await supabase
+      .from("tasks")
+      .select("*")
+      .eq("user_id", userID);
+
+   return tasks;
+}

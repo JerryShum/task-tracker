@@ -21,6 +21,7 @@ function LoginForm() {
       if (!serverActionState) return;
 
       if (serverActionState.status === "success") {
+         console.log(serverActionState);
          setUser(serverActionState.user);
          toast.success(serverActionState.message);
          router.push("/application");

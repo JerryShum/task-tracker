@@ -1,6 +1,7 @@
 "use server";
+import { cookies } from "next/headers";
 
-import { getUser, insertUser } from "./supabaseAPI";
+import { getTasks, getUser, insertUser } from "./supabaseAPI";
 
 export async function insertUserAction(previousState, formdata) {
    const user = {
@@ -35,6 +36,8 @@ export async function getUserAction(previousState, formdata) {
 
    // response.success = true
    if (response.success) {
+      cookies().set("userID", response.user.id, { httpOnly: true });
+
       return {
          user: response.user,
          status: "success",

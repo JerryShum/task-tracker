@@ -1,7 +1,16 @@
+import { getTasks } from "@/app/_lib/supabaseAPI";
 import AddTaskForm from "../../_components/task/AddTaskForm";
 import TaskList from "../../_components/task/TaskList";
+import { cookies } from "next/headers";
 
-export default function Page() {
+export default async function Page() {
+   const cookieStore = cookies();
+   const userID = cookieStore.get("userID")?.value;
+   console.log(userID);
+
+   const tasks = await getTasks(userID);
+   console.log(tasks);
+
    return (
       <div className="px-60 py-10 space-y-10">
          <h1 className=" text-primary-light font-bold text-4xl">Tasks</h1>
@@ -12,7 +21,7 @@ export default function Page() {
             <h2 className="text-accent-lighter font-bold text-2xl">
                Task List
             </h2>
-            <TaskList />
+            <TaskList tasks={tasks} />
          </div>
       </div>
    );
