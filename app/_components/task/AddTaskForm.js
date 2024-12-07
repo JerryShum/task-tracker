@@ -1,18 +1,23 @@
+import { insertTaskAction } from "@/app/_lib/actions";
 import Button from "../UI/Button";
 
-function AddTaskForm() {
+function AddTaskForm({ userID }) {
    return (
-      <form className="text-text-light flex-col flex max-w-[600px] mx-auto border-2 border-accent-lighter p-4 rounded-xl space-y-2">
+      <form
+         className="text-text-light flex-col flex max-w-[600px] mx-auto border-2 border-accent-lighter p-4 rounded-xl space-y-2"
+         action={insertTaskAction}
+      >
          <div className="border-b border-accent-light flex flex-col gap-2 pb-4">
             <input
                type="text"
                name="title"
                placeholder="Task Title"
                className="bg-transparent outline-none text-2xl"
+               required
             />
             <input
                type="text"
-               name="title"
+               name="description"
                placeholder="Description"
                className="bg-transparent outline-none text-sm"
             />
@@ -41,7 +46,7 @@ function AddTaskForm() {
                </select>
 
                <input
-                  type="date"
+                  type="datetime-local"
                   id="dueDate"
                   name="dueDate"
                   className="bg-transparent border-b border-accent-light outline-none"
@@ -49,9 +54,28 @@ function AddTaskForm() {
             </div>
 
             <div className="space-x-2">
-               <Button type={"secondary"}>Cancel</Button>
-               <Button type={"primary"}>Add Task</Button>
+               <button
+                  type="reset"
+                  className="bg-accent-light text-black p-2 px-3 rounded-xl"
+               >
+                  Cancel
+               </button>
+               <button
+                  type="submit"
+                  className="bg-primary-light text-black p-2 px-3 rounded-xl"
+               >
+                  Submit
+               </button>
             </div>
+
+            {/* Hidden value for userID */}
+            <input
+               type="hidden"
+               id="userID"
+               name="user_id"
+               value={parseInt(userID)}
+               className="bg-transparent border-b border-accent-light outline-none"
+            />
          </div>
       </form>
    );

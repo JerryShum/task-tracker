@@ -1,7 +1,8 @@
 "use server";
 import { cookies } from "next/headers";
 
-import { getTasks, getUser, insertUser } from "./supabaseAPI";
+import { getTasks, getUser, insertUser, insertTask } from "./supabaseAPI";
+import { revalidatePath } from "next/cache";
 
 export async function insertUserAction(previousState, formdata) {
    const user = {
@@ -49,4 +50,21 @@ export async function getUserAction(previousState, formdata) {
          message: response.message || "An unexpected error occurred.",
       };
    }
+}
+
+export async function insertTaskAction(formdata) {
+   const task = {
+      title: formdata.get("title"),
+      description: formdata.get("description"),
+      priority: formdata.get("priority"),
+      dueDate: formdata.get("dueDate"),
+      user_id: formdata.get("user_id"),
+   };
+
+   console.log(task);
+
+   const response = await insertTask(task);
+   console.log(response);
+
+   // revalidatePath("/application/task");
 }

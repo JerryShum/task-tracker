@@ -71,3 +71,24 @@ export async function getTasks(userID) {
 
    return tasks;
 }
+
+export async function insertTask(task) {
+   const { title, description, priority, dueDate, user_id } = task;
+   console.log("supabase" + task.user_id);
+   const { error } = await supabase
+      .from("tasks")
+      .insert([
+         {
+            title: title,
+            description: description,
+            priority: priority,
+            is_completed: false,
+            due_date: dueDate,
+            user_id: Number(user_id),
+         },
+      ])
+      .select();
+
+   console.log(error);
+   return error;
+}
