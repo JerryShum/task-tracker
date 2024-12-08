@@ -20,7 +20,7 @@ function TaskUnit({ task }) {
             </div>
 
             <div className="flex flex-col items-center justify-center gap-2">
-               <Link href={`/task/${id}`}>
+               <Link href={`/application/task/${id}`}>
                   <PencilSquareIcon className="h-6 text-black" />
                </Link>
                <button>
