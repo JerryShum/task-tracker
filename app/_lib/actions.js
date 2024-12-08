@@ -66,5 +66,5 @@ export async function insertTaskAction(formdata) {
    const response = await insertTask(task);
    console.log(response);
 
-   // revalidatePath("/application/task");
+   revalidatePath("/application/task");
 }
