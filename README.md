@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Tracker with Next.js and Supabase
 
-## Getting Started
+Welcome to the **Task Tracker** application! This is a simple web application built with [Next.js](https://nextjs.org/) to help users track their tasks. The project is designed as a learning experience to explore Next.js features, including routing, API integration, and server-side rendering, while leveraging [Supabase](https://supabase.com/) as the backend for user authentication and task management.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Pseudo User Authentication**: Sign up and log in to your personal account.
+- **Task Management**: Create, view, and manage tasks securely.
+- **Real-Time Updates**: Seamless interaction with the Supabase backend for CRUD operations.
+
+## Next.js Features Explored
+
+This project helped in learning several key features of Next.js:
+
+- **Revalidation**: Implementing incremental static regeneration to keep data fresh.
+- **Server Actions**: Leveraging server-side logic for task management.
+- **Server and Client Components**: Utilizing both rendering paradigms for performance optimization.
+- **Dynamic Routing**: Creating user-specific and task-specific routes.
+- **API**: Setting up custom APIs for interacting with Supabase.
+
+## Tech Stack
+
+- **Frontend**: [Next.js](https://nextjs.org/)
+- **Backend**: [Supabase](https://supabase.com/) (PostgreSQL-based backend-as-a-service)
+- **Styling**: Tailwind CSS (or your choice of styling framework)
+
+## Setup Instructions
+
+### Prerequisites
+
+1. [Node.js](https://nodejs.org/) installed (recommended version: `16.x` or higher).
+2. A Supabase account and project set up.
+3. Your Supabase project's URL and API key (available in the Supabase dashboard).
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/your-username/nextjs-task-tracker.git
+   cd nextjs-task-tracker
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Environment Variables**
+
+   Create a `.env.local` file in the root of your project and add the following variables:
+
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   ```
+
+   Replace `your-supabase-url` and `your-anon-key` with your Supabase project's URL and public API key.
+
+4. **Run the Development Server**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
+
+### Deployment
+
+To deploy the app, use platforms like [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Ensure that your environment variables are configured correctly in the deployment platform.
+
+## Folder Structure
+
+```plaintext
+/
+├── app/              # Main application directory for App Router
+│   ├── api/          # API routes
+│   │   └── auth/     # Authentication-related APIs
+│   ├── application/  # Application-specific pages or components
+│   ├── login/        # Login page
+│   ├── signup/       # Signup page
+│   ├── layout.js     # Root layout for the application
+│   ├── page.js       # Home page of the application
+│   └── globals.css   # Global styles
+├── components/       # Reusable UI components
+├── lib/              # Supabase client setup and utilities
+├── public/           # Public assets like images or icons
+├── styles/           # Additional styling if needed
+├── .env.local        # Environment variables (ignored by Git)
+└── README.md         # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Roadmap
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This project is a work in progress with plans for additional features:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] Enhanced task categorization.
+- [ ] Deadline reminders.
+- [ ] Integration with third-party services (e.g., Google Calendar).
+- [ ] Improved user authentication and authorization using next-js with certified providers. 
 
-## Learn More
+## Acknowledgements
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Supabase Documentation](https://supabase.com/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Thank you for checking out my Task Tracker application! 🎉
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
