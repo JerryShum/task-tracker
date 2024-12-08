@@ -32,6 +32,44 @@ This project helped in learning several key features of Next.js:
 2. A Supabase account and project set up.
 3. Your Supabase project's URL and API key (available in the Supabase dashboard).
 
+### Setting Up Supabase
+
+To replicate the database schema required for the Task Tracker application, follow these steps:
+
+1. **Create a Supabase Project**
+   - Sign in to your [Supabase account](https://supabase.com/) and create a new project.
+
+2. **Set Up the Database Schema**
+   - Navigate to the "SQL Editor" in the Supabase dashboard.
+   - Run the following SQL commands to create the necessary tables:
+
+     ```sql
+     -- Create the 'users' table
+     CREATE TABLE users (
+         id SERIAL PRIMARY KEY,
+         created_at TIMESTAMPTZ DEFAULT NOW(),
+         username TEXT NOT NULL,
+         email TEXT NOT NULL UNIQUE,
+         password TEXT NOT NULL
+     );
+
+     -- Create the 'tasks' table
+     CREATE TABLE tasks (
+         id SERIAL PRIMARY KEY,
+         created_at TIMESTAMPTZ DEFAULT NOW(),
+         title TEXT NOT NULL,
+         description TEXT,
+         priority TEXT,
+         due_date TIMESTAMPTZ,
+         user_id INT REFERENCES users (id),
+         is_completed BOOLEAN DEFAULT FALSE
+     );
+     ```
+
+3. **Add API Keys**
+   - Copy the `SUPABASE_URL` and `SUPABASE_ANON_KEY` from the "Settings > API" section of your Supabase dashboard.
+   - Add these keys to your `.env.local` file as described in the "Set Up Environment Variables" section.
+
 ### Installation
 
 1. **Clone the Repository**
