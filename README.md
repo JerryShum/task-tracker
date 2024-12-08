@@ -133,10 +133,12 @@ To deploy the app, use platforms like [Vercel](https://vercel.com/) or [Netlify]
 
 This project is a work in progress with plans for additional features:
 
+- [ ] Allow task editing and deletion. 
 - [ ] Enhanced task categorization.
 - [ ] Deadline reminders.
 - [ ] Integration with third-party services (e.g., Google Calendar).
-- [ ] Improved user authentication and authorization using next-js with certified providers. 
+- [ ] Improved user authentication and authorization using next-js with certified providers.
+- [ ] Include a "Profile" section within the application layout. This will allow user's to modify their information.
 
 ## Acknowledgements
 
